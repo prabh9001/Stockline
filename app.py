@@ -20,7 +20,7 @@ end = datetime.date.today()
 # Set the start date to 10 years ago
 start = end - datetime.timedelta(days=365*14)#In this case, the code sets the days parameter to 365*14, which calculates the number of days in 10 years (365 days * 10) and multiplies it by 14 to add an additional 4 years as a safety margin to ensure that the data covers a full 10-year period
 
-st.sidebar.text("Enter the Stock Symbol First")
+st.sidebar.write("Note:Enter the Stock Symbol First")
 user_input=st.sidebar.text_input('Enter Stock')
 st.sidebar.button('Search')
 st.header(user_input)
