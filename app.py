@@ -203,3 +203,13 @@ score=f'''
 print(score)
 st.text("Metrics:")
 st.text(score)
+
+from sklearn.metrics import accuracy_score
+
+# Calculate the accuracy of the model
+accuracy = accuracy_score(Y_test, lm.predict(X_test))
+
+# Print the accuracy of the model
+print(f"The accuracy of the model is {accuracy:.2%}")
+st.text("Accuracy:")
+st.text(accuracy)
