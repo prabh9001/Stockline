@@ -211,5 +211,5 @@ accuracy = accuracy_score(Y_test, lm.predict(X_test))
 
 # Print the accuracy of the model
 print(f"The accuracy of the model is {accuracy:.2%}")
-st.text("Accuracy:")
+st.write("Accuracy:")
 st.text(accuracy)
