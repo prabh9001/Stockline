@@ -15,6 +15,7 @@ from plotly.offline import plot
 
 st.title('Stock Price Predicted Line')
 # Get the current date
+
 end = datetime.date.today()
 
 # Set the start date to 10 years ago
@@ -50,7 +51,9 @@ with Data_Chart:
     st.subheader('Data Chart')
     df = df.reset_index()
     st.write(df.describe())
-    
+
+
+
 #Visualisation
 st.subheader('Closing Price Chart with Date ')
 layout = go.Layout(
@@ -75,6 +78,7 @@ yaxis=dict(
 Stock_data=[{'x':df['Date'],'y':df['Close']}]
 plot= go.Figure(data=Stock_data,layout=layout)
 st.plotly_chart(plot)
+
 
 
 df['Date'] = pd.to_datetime(df['Date'])
@@ -204,12 +208,4 @@ print(score)
 st.text("Metrics:")
 st.text(score)
 
-from sklearn.metrics import accuracy_score
 
-# Calculate the accuracy of the model
-accuracy = accuracy_score(Y_test, lm.predict(X_test))
-
-# Print the accuracy of the model
-print(f"The accuracy of the model is {accuracy:.2%}")
-st.write("Accuracy:")
-st.text(accuracy)
