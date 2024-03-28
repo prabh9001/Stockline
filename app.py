@@ -90,10 +90,6 @@ d=df[['High','Low','Open','Close']]
 fig=mpf.plot(df,type='candle',volume=True)
 st.pyplot(fig)
 
-# Display the plot
-plt.show()
-st.pyplot(fig)
-#def chart():
   #  df['Date'] = pd.to_datetime(df['Date'])
 # Set 'date_column' as the index
 #df.set_index('Date', inplace=True)
