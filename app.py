@@ -21,8 +21,8 @@ end = datetime.date.today()
 # Set the start date to 10 years ago
 start = end - datetime.timedelta(days=365*14)#In this case, the code sets the days parameter to 365*14, which calculates the number of days in 10 years (365 days * 10) and multiplies it by 14 to add an additional 4 years as a safety margin to ensure that the data covers a full 10-year period
 
-st.sidebar.write("Note : Enter the Stock Symbol First")
-user_input=st.sidebar.text_input('Enter Stock')
+st.sidebar.write("Note : Enter the Stock ticker Symbol First")
+user_input=st.sidebar.text_input('Enter Stock ticker')
 st.sidebar.button('Search')
 st.header(user_input)
 
@@ -80,14 +80,29 @@ plot= go.Figure(data=Stock_data,layout=layout)
 st.plotly_chart(plot)
 
 
-
 df['Date'] = pd.to_datetime(df['Date'])
 # Set 'date_column' as the index
 df.set_index('Date', inplace=True)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.subheader('Chart With Volume Of Candles')
-fig=mpf.plot(df,type='candle',volume=True)
+# Calculate the RSI
+delta = df['Close'].diff()
+gain = delta.where(delta > 0, 0)
+loss = -delta.where(delta < 0, 0)
+avg_gain = gain.rolling(window=14).mean()
+avg_loss = loss.rolling(window=14).mean()
+rs = avg_gain / avg_loss
+rsi = 100 - (100 / (1 + rs))
+
+# Convert the RSI series to a DataFrame
+rsi_df = rsi.to_frame()
+
+# Plot the RSI
+fig=mpf.plot(rsi_df, return_original_data=False, type='line', title='RSI')
+
+# Display the plot
+plt.show()
 st.pyplot(fig)
 #def chart():
   #  df['Date'] = pd.to_datetime(df['Date'])
