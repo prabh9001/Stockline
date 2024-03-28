@@ -89,7 +89,7 @@ st.subheader('Chart With Volume Of Candles')
 d=df[['High','Low','Open','Close']]
 fig=mpf.plot(df,type='candle',volume=True)
 st.pyplot(fig)
-
+st.show()
   #  df['Date'] = pd.to_datetime(df['Date'])
 # Set 'date_column' as the index
 #df.set_index('Date', inplace=True)
