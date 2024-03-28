@@ -86,20 +86,9 @@ df.set_index('Date', inplace=True)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.subheader('Chart With Volume Of Candles')
-# Calculate the RSI
-delta = df['Close'].diff()
-gain = delta.where(delta > 0, 0)
-loss = -delta.where(delta < 0, 0)
-avg_gain = gain.rolling(window=14).mean()
-avg_loss = loss.rolling(window=14).mean()
-rs = avg_gain / avg_loss
-rsi = 100 - (100 / (1 + rs))
-
-# Convert the RSI series to a DataFrame
-rsi_df = rsi.to_frame()
-
-# Plot the RSI
-fig=mpf.plot(rsi_df, return_original_data=False, type='line', title='RSI')
+d=df[['High','Low','Open','Close']]
+fig=mpf.plot(df,type='candle',volume=True)
+st.pyplot(fig)
 
 # Display the plot
 plt.show()
