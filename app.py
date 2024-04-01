@@ -1,17 +1,25 @@
+import plotly
 from sklearn.linear_model import LinearRegression
 import numpy as ny
 import pandas as pd
 import matplotlib.pyplot as plt 
+import matplotlib.dates as mdates
 import plotly.graph_objs as go
 from plotly.offline import plot
 from sklearn.discriminant_analysis import StandardScaler
 from sklearn.model_selection import train_test_split
 import streamlit as st
 import yfinance as yf
-import mplfinance as mpf
 import datetime
 #for offline plotting
 from plotly.offline import plot
+
+from timeinterval import fetch_periods_intervals, fetch_stock_history
+
+st.set_page_config(
+    page_title="Stockline",
+    page_icon="📊",
+)
 
 st.title('Stock Price Predicted Line')
 # Get the current date
@@ -79,19 +87,55 @@ Stock_data=[{'x':df['Date'],'y':df['Close']}]
 plot= go.Figure(data=Stock_data,layout=layout)
 st.plotly_chart(plot)
 
-
+#for Date error in predicted chart
 df['Date'] = pd.to_datetime(df['Date'])
 # Set 'date_column' as the index
 df.set_index('Date', inplace=True)
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
-st.subheader('Chart With Volume Of Candles')
-d=df[['High','Low','Open','Close']]
-fig=mpf.plot(df,type='candle',volume=True)
-plt.show()
-st.pyplot(fig)
+st.header("Stock Intraday Data")
+# Get the user input for the period
+periods = fetch_periods_intervals()
 
-  #  df['Date'] = pd.to_datetime(df['Date'])
+# Add a selector for period
+period = st.selectbox("Choose a period", list(periods.keys()))
+
+# Add a selector for interval
+interval = st.selectbox("Choose an interval", periods[period])
+
+# Fetch the stock history if the user inputs are valid
+if user_input and period and interval:
+    stock_history = fetch_stock_history(user_input, period, interval)
+    # Create the plotly figure
+import plotly.graph_objects as go
+
+# Create a new trace for the candlestick chart
+candlestick = go.Candlestick(
+    x=stock_history.index,
+    open=stock_history['Open'],
+    high=stock_history['High'],
+    low=stock_history['Low'],
+    close=stock_history['Close'],
+    name='Candlestick'
+)
+
+# Create the plotly figure
+figure = go.Figure(
+    data=[
+        candlestick
+    ],
+    layout=go.Layout(
+        title=f"{user_input} Stock History",
+        xaxis=go.layout.XAxis(title='Date'),
+        yaxis=go.layout.YAxis(title='Value')
+    )
+)
+
+# Display the plot in Streamlit
+st.plotly_chart(figure)
+
+
+
+# df['Date'] = pd.to_datetime(df['Date'])
 # Set 'date_column' as the index
 #df.set_index('Date', inplace=True)
 
