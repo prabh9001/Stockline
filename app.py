@@ -136,7 +136,7 @@ figure = go.Figure(
         candlestick
     ],
     layout=go.Layout(
-        title=f"{stock_name} Intraday Chart",
+        title=f'{stock_name} Intraday Chart',
         xaxis=go.layout.XAxis(title='Date'),
         yaxis=go.layout.YAxis(title='Value')
     )
