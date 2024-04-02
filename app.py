@@ -114,8 +114,7 @@ candlestick = go.Candlestick(
     open=stock_history['Open'],
     high=stock_history['High'],
     low=stock_history['Low'],
-    close=stock_history['Close'],
-    name='Candlestick'
+    close=stock_history['Close']
 )
 
 # Create the plotly figure
@@ -132,36 +131,6 @@ figure = go.Figure(
 
 # Display the plot in Streamlit
 st.plotly_chart(figure)
-
-
-
-# df['Date'] = pd.to_datetime(df['Date'])
-# Set 'date_column' as the index
-#df.set_index('Date', inplace=True)
-
-#st.set_option('deprecation.showPyplotGlobalUse', False)
-#st.subheader('(High,Low,Open,Close) Chart And Shows the volume Of candles')
-#d=df[['High','Low','Open','Close']]
-#fig=mpf.plot(df,type='candle',volume=True)
-#st.pyplot(fig)
-
-# Allow the user to enter a date
-#user_date1 = st.sidebar.text_input("Enter a date (YYYY-MM-DD):")
-
-# Convert the user-entered date to a datetime object
-#user_date1 = pd.to_datetime(user_date1)
-
-#if 'Date' in df.columns:
-    #iday = df.loc[df['Date'] == user_date1, :]
-    # Plot the intraday data as a candlestick chart with moving averages
-    #fig = mpf.plot(iday, type='candle', mav=(7,12))
-     # Display the chart using the st.pyplot() function
-    #st.pyplot(fig)
-#else:
-    # Handle the case where the 'Date' column does not exist in the df DataFrame
-    #print("The 'Date' column does not exist in the df DataFrame.")
-
-
 
 One_Hundred_Days_EMA_Chart,Two_Hundred_Days_EMA_Chart=st.tabs(["100 Days EMA Chart","200 Days EMA Chart"])
 with One_Hundred_Days_EMA_Chart:
