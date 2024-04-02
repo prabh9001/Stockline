@@ -34,6 +34,18 @@ user_input=st.sidebar.text_input('Enter Stock ticker')
 st.sidebar.button('Search')
 st.header(user_input)
 
+def get_stock_history(symbol):
+    stock_data = yf.download(symbol)
+    return stock_data
+
+def get_stock_name(symbol):
+    stock = yf.Ticker(symbol)
+    return stock.info['shortName']
+if user_input:
+    stock_name = get_stock_name(user_input)
+    st.write(f"Stock Name: {stock_name}")
+
+
 df = yf.Ticker(user_input)
 Cashflow_Statement,Balance_Sheet,Holders_Info=st.tabs(["Cashflow Statement Of the company","Balance Sheet Of the company","Insider Roster Holders Info"])
 with Holders_Info:
@@ -53,6 +65,7 @@ with Dividend_and_stock_split:
 df = yf.download(user_input, start, end)
 st.sidebar.write("Data Starting date :",start)
 st.sidebar.write("Data Ending date :",end)
+
 
  #Describing data
 with Data_Chart:

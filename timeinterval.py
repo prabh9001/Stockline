@@ -2,6 +2,7 @@
 import yfinance as yf
 import pandas as pd
 
+
 def fetch_periods_intervals():
     # Create dictionary for periods and intervals
     periods = {
