@@ -1,4 +1,4 @@
-import plotly
+import streamlit as st
 from sklearn.linear_model import LinearRegression
 import numpy as ny
 import pandas as pd
@@ -8,7 +8,6 @@ import plotly.graph_objs as go
 from plotly.offline import plot
 from sklearn.discriminant_analysis import StandardScaler
 from sklearn.model_selection import train_test_split
-import streamlit as st
 import yfinance as yf
 import datetime
 #for offline plotting
