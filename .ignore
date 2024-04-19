@@ -1,0 +1,10 @@
+test.log
+build
+*.log
+**/*.log
+build
+# Ignore .pyc files
+*.pyc
+
+# Ignore the virtual environment directory
+venv/
