@@ -58,7 +58,7 @@ pip install -r requirements.txt
 streamlit run Introduction.py
 ```
 
-The app will be live at ```http://localhost:8501```
+The app will be live at ```http://localhost:8502```
 
 ## 📈 **Future Roadmap**
 
