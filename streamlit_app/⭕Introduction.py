@@ -1,8 +1,8 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Stockline",
-    page_icon="📊",
+    page_title="Introduction",
+    page_icon="⭕",
 )
 
 st.markdown(
