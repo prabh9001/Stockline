@@ -16,7 +16,7 @@ from plotly.offline import plot
 from timeinterval import fetch_periods_intervals, fetch_stock_history
 
 st.set_page_config(
-    page_title="Stockline",
+    page_title="Prediction",
     page_icon="📊",
 )
 
