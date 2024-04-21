@@ -234,5 +234,5 @@ score=f'''
 print(score)
 st.text("Metrics:")
 st.text(score)
-st.progress(score)
+
 
