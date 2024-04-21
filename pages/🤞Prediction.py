@@ -232,7 +232,7 @@ score=f'''
 {'MSE'.ljust(10)}{mse(Y_train,lm.predict(X_train))}\t{mse(Y_test,lm.predict(X_test))}
 '''
 print(score)
-st.sidebar.text("Metrics:")
-st.sidebar.text(score)
+
+
 
 
