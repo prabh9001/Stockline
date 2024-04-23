@@ -73,8 +73,6 @@ with Data_Chart:
     df = df.reset_index()
     st.write(df)
 
-
-
 #Visualisation
 st.subheader('Closing Price Chart with Date ')
 layout = go.Layout(
