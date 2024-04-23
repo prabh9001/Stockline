@@ -71,7 +71,7 @@ st.sidebar.write("Data Ending date :",end)
 with Data_Chart:
     st.subheader('Data Chart')
     df = df.reset_index()
-    st.write(df.describe())
+    st.write(df)
 
 
 
