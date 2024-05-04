@@ -1,0 +1,7 @@
+To Run the app
+
+1.Open the Command Prompt
+2.Add the Project Folder in path using 'cd' command 
+3.After that write command streamlit run ⭕Introduction.py
+
+The app will be live at ```http://localhost:8501```

@@ -4,8 +4,8 @@ from sklearn.linear_model import LinearRegression
 import numpy as ny
 import pandas as pd
 import matplotlib.pyplot as plt 
-import matplotlib.dates as mdates
 import plotly.graph_objs as go
+
 from plotly.offline import plot
 from sklearn.discriminant_analysis import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -117,7 +117,7 @@ interval = st.selectbox("Choose an interval", periods[period])
 if user_input and period and interval:
     stock_history = fetch_stock_history(user_input, period, interval)
     # Create the plotly figure
-import plotly.graph_objects as go
+
 
 # Create a new trace for the candlestick chart
 candlestick = go.Candlestick(
@@ -162,6 +162,7 @@ with  Two_Hundred_Days_EMA_Chart:
     plt.plot(ma100)
     plt.plot(ma200)
     st.pyplot(fig)
+
 
 
 st.title('Linear Regression - Actual vs Predicted Values')
