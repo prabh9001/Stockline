@@ -225,6 +225,7 @@ if X_test.dtype == ny.dtype('datetime64[ns]'):
     # Convert datetime to numerical representation
     X_test = X_test.astype(ny.float64)
 
+st.text("This Meric Shows the trained data and testing data")
 score=f'''
 {'Metric'.ljust(10)}{'Train'.center(20)}{'Test'.center(20)}
 {'r2_score'.ljust(10)}{r2_score(Y_train,lm.predict(X_train))}\t{r2_score(Y_test,lm.predict(X_test))}
