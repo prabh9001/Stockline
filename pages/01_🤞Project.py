@@ -164,8 +164,9 @@ with  Two_Hundred_Days_EMA_Chart:
     st.pyplot(fig)
 
 
-
-st.title('Linear Regression - Actual vs Predicted Values')
+def LinearRegression():
+    
+    st.title('Linear Regression - Actual vs Predicted Values')
 from sklearn.linear_model import LinearRegression
 # Example data
 X_train = ny.random.rand(2274, 1)  # Replace with your actual features
