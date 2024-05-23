@@ -21,7 +21,7 @@ st.set_page_config(
     page_icon="📊",
 )
 
-st.title('Stock Price Predicted Line')
+st.title('Stock Price Predicted ')
 # Get the current date
 
 end = datetime.date.today()
